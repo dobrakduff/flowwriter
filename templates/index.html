@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Writing App</title>
+    <style>
+        textarea {
+            width: 100%;
+            height: 300px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form id="writingForm" method="post">
+        <textarea id="content" name="content" placeholder="Start typing...">{{ content }}</textarea>
+    </form>
+
+    <script>
+        let lastContent = document.getElementById('content').value.trim();
+
+        setInterval(function() {
+            const currentContent = document.getElementById('content').value.trim();
+            if (currentContent === lastContent) {
+                // Clear the content if it remains unchanged for 5 seconds
+                document.getElementById('content').value = '';
+            } else {
+                lastContent = currentContent;
+            }
+        }, 3000); // Check every 5 seconds
+    </script>
+</body>
+</html>
